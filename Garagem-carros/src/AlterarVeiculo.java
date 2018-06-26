@@ -39,29 +39,56 @@ public class AlterarVeiculo {
 	}
 	
 	private Veiculo AlterarVeiculoEncontrado(Veiculo veiculo, List<Veiculo> listaVeiculos) {
-		String placa = this.AlterarPlaca(listaVeiculos);
+		String placa = "";
+		int tipo = 0;
 		int cilindradas = 0;
 		int qtdeEixos = 0;
+		String modelo = "";
+		int ano = 0;
+		double valor = 0;
 		
-		int tipo = padronizar.Tipo();
-		
-		if (tipo == 1) {
-			cilindradas = padronizar.Cilindradas();
-		} else if (tipo == 3) {
-			qtdeEixos = padronizar.Eixos();
+		int alterarPlaca = padronizar.Opcao("Alterar a placa? 1 - Sim | 2 - Não");
+		if (alterarPlaca == 1) {
+			placa = this.AlterarPlaca(listaVeiculos);
+			veiculo.placa = placa;
 		}
 		
-		System.out.println("informe o modelo: ");
-		String modelo = scanner.next();
+		int alterarTipo = padronizar.Opcao("Alterar o tipo? 1 - Sim | 2 - Não");
+		if (alterarTipo == 1) {
+			tipo = padronizar.Tipo();
+			veiculo.tipo = tipo;
+		}
 		
-		int ano = padronizar.Ano();
-		double valor = padronizar.Valor();
+		if (tipo == 1) {
+			int alterarCilindradas = padronizar.Opcao("Alterar as cilindradas? 1 - Sim | 2 - Não");
+			if (alterarCilindradas == 1) {
+				cilindradas = padronizar.Cilindradas();
+			}
+		} else if (tipo == 3) {
+			int alerarQtdeEixos = padronizar.Opcao("Alterar a quantidade de eixos? 1 - Sim | 2 - Não");
+			if (alerarQtdeEixos == 1) {
+				qtdeEixos = padronizar.Eixos();
+			}
+		}
 		
-		veiculo.placa = placa;
-		veiculo.modelo = modelo;
-		veiculo.ano = ano;
-		veiculo.valor = valor;
-
+		int alterarModelo = padronizar.Opcao("Alterar o modelo? 1 - Sim | 2 - Não");
+		if (alterarModelo == 1) {
+			modelo = scanner.next();
+			veiculo.modelo = modelo;
+		}
+		
+		int alterarAno = padronizar.Opcao("Alterar o ano? 1 - Sim | 2 - Não");
+		if (alterarAno == 1) {
+			ano = padronizar.Ano();
+			veiculo.ano = ano;
+		}
+		
+		int alterarValor = padronizar.Opcao("Alterar o valor? 1 - Sim | 2 - Não");
+		if (alterarValor == 0) {
+			valor = padronizar.Valor();
+			veiculo.valor = valor;
+		}
+		
 		if (cilindradas != 0) {
 			veiculo = this.AlterarMoto(veiculo, cilindradas);
 		}

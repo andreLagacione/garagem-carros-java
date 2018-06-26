@@ -96,7 +96,7 @@ public class Padronizar {
 		String valor = scanner.next();
 		int opcao = this.ParseToInt(valor, 0);
 		
-		if (opcao <= 0) {
+		if (opcao <= 0 && opcao > 2) {
 			System.out.println("A opção informada não é valida!");
 			this.Opcao(mensagem);
 		}
