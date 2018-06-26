@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -149,7 +150,16 @@ public class StartSistema {
 		 		break;
 		 		
 		 	case 9:
-		 		System.out.println("Salvar e Sair");
+		 		ManipularTxt salvar = new ManipularTxt();
+				
+		 		try {
+					salvar.Gravar(listaVeiculos);
+				} catch (IOException e) {
+					e.printStackTrace();
+					System.out.println("Houve algum erro ao salvar, por favor tente novamente em alguns instantes!");
+					this.Start();
+				}
+		 		
 		 		break;
 		 }
 	}
