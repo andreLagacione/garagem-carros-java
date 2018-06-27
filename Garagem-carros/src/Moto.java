@@ -5,6 +5,10 @@ public class Moto extends Veiculo implements Comparable<Moto> {
 	public int GetCilindradas() {
 		return this.cilindradas;
 	}
+	
+	public void SetCilindradas(int cilindradas) {
+		this.cilindradas = cilindradas;
+	}
 
 	@Override
 	public int compareTo(Moto outraMoto) {

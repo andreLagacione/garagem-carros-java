@@ -4,12 +4,28 @@ import java.util.List;
 import java.util.Scanner;
 
 public class StartSistema {
+	ManipularTxt manipular = new ManipularTxt();
 	private List<Veiculo> listaVeiculos = new ArrayList<Veiculo>();
 	Scanner scanner = new Scanner(System.in);
+	int controleLeitura = 0;
 	
 	public void Start() {
+		if (controleLeitura == 0) {
+			this.BuscarVeiculos();
+		}
+		
 		TelaInicial tela = new TelaInicial();
-		 this.MapearOpcoes(tela.imprimirTela());
+		this.MapearOpcoes(tela.imprimirTela());
+	}
+	
+	public void BuscarVeiculos() {
+		try {
+			listaVeiculos = manipular.Ler();
+			controleLeitura++;
+		} catch(IOException e) {
+			e.printStackTrace();
+			System.out.println("Erro ao ler o arquivo com as informações!");
+		}
 	}
 	
 	public void MapearOpcoes(int opcaoSelecionada) {
@@ -150,10 +166,9 @@ public class StartSistema {
 		 		break;
 		 		
 		 	case 9:
-		 		ManipularTxt salvar = new ManipularTxt();
-				
 		 		try {
-					salvar.Gravar(listaVeiculos);
+		 			manipular.Gravar(listaVeiculos);
+		 			controleLeitura = 0;
 				} catch (IOException e) {
 					e.printStackTrace();
 					System.out.println("Houve algum erro ao salvar, por favor tente novamente em alguns instantes!");
