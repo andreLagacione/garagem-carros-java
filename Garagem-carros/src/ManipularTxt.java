@@ -23,8 +23,6 @@ public class ManipularTxt {
 					formatoSalvar += ";" + veiculo.GetQtdeEixos();
 				}
 				
-				System.out.println(formatoSalvar);
-				
 				arquivo.println(formatoSalvar);
 			}
 			
@@ -60,8 +58,6 @@ public class ManipularTxt {
 					Caminhao caminhao = new Caminhao();
 					caminhao.qtdeEixos = Integer.parseInt(atributos[5]);
 				}
-				
-				System.out.println(veiculo.modelo + " - " + veiculo.ano + " - " + veiculo.placa + " - " + veiculo.valor + " - " + veiculo.tipo);
 				
 				listaVeiculos.add(veiculo);
 			}

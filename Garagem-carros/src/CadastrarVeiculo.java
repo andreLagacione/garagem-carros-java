@@ -4,16 +4,17 @@ import java.util.Scanner;
 public class CadastrarVeiculo {
 	Scanner scanner = new Scanner(System.in);
 	private Padronizar padronizar = new Padronizar();
+	private Pesquisar pesquisar = new Pesquisar();
 	
 	public List<Veiculo> Cadastrar(List<Veiculo> listaVeiculos) {
 		int tipo = padronizar.Tipo();
 		
 		if (tipo == 1) {
-			listaVeiculos.add(this.moto(tipo));
+			listaVeiculos.add(this.moto(tipo, listaVeiculos));
 		} else if (tipo == 2) {
-			listaVeiculos.add(this.carro(tipo));
+			listaVeiculos.add(this.carro(tipo,  listaVeiculos));
 		} else if (tipo == 3) {
-			listaVeiculos.add(this.caminhao(tipo));
+			listaVeiculos.add(this.caminhao(tipo,  listaVeiculos));
 		} else {
 			System.out.println("Opção invalida, selecione uma opção de 1 a 3!");
 			this.Cadastrar(listaVeiculos);
@@ -28,13 +29,13 @@ public class CadastrarVeiculo {
 		return listaVeiculos;
 	}
 	
-	private Veiculo moto(int tipo) {
+	private Veiculo moto(int tipo, List<Veiculo> listaVeiculos) {
 		System.out.println("Modelo: ");
 		String modelo = scanner.next();
 		
 		int cilindradas = padronizar.Cilindradas();
 		int ano = padronizar.Ano();
-		String placa = padronizar.Placa();
+		String placa = this.PedirPlaca(listaVeiculos);
 		double valor = padronizar.Valor();
 		
 		Moto moto = new Moto();
@@ -48,12 +49,13 @@ public class CadastrarVeiculo {
 		return moto;
 	}
 	
-	private Veiculo carro(int tipo) {
+	private Veiculo carro(int tipo, List<Veiculo> listaVeiculos) {
 		System.out.println("Modelo: ");
 		String modelo = scanner.next();
 		
 		int ano = padronizar.Ano();
-		String placa = padronizar.Placa();
+		String placa = this.PedirPlaca(listaVeiculos);
+		System.out.println(placa);
 		double valor = padronizar.Valor();
 		
 		Veiculo veiculo = new Veiculo();
@@ -66,13 +68,13 @@ public class CadastrarVeiculo {
 		return veiculo;
 	}
 	
-	private Veiculo caminhao(int tipo) {
+	private Veiculo caminhao(int tipo, List<Veiculo> listaVeiculos) {
 		System.out.println("Modelo: ");
 		String modelo = scanner.next();
 		
 		int qtdeEixos= padronizar.Eixos();
 		int ano = padronizar.Ano();
-		String placa = padronizar.Placa();
+		String placa = this.PedirPlaca(listaVeiculos);
 		double valor = padronizar.Valor();
 		
 		Caminhao caminhao = new Caminhao();
@@ -84,6 +86,19 @@ public class CadastrarVeiculo {
 		caminhao.qtdeEixos = qtdeEixos;
 		
 		return caminhao;
+	}
+	
+	private String PedirPlaca(List<Veiculo> listaVeiculos) {
+		String placa = padronizar.Placa();
+		int placaExiste = pesquisar.Placa(listaVeiculos, placa);
+		
+		if (placaExiste != -1) {
+			System.out.println("Essa placa já está cadastrada para outro veículo!!");
+			this.PedirPlaca(listaVeiculos);
+			placa = "";
+		}
+		
+		return placa;
 	}
 
 }
