@@ -1,33 +1,31 @@
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class CadastrarVeiculo {
 	Scanner scanner = new Scanner(System.in);
-	private List<Veiculo> listaCarrosTemp = new ArrayList<Veiculo>();
 	private Padronizar padronizar = new Padronizar();
 	
-	public List<Veiculo> Cadastrar() {
+	public List<Veiculo> Cadastrar(List<Veiculo> listaVeiculos) {
 		int tipo = padronizar.Tipo();
 		
 		if (tipo == 1) {
-			listaCarrosTemp.add(this.moto(tipo));
+			listaVeiculos.add(this.moto(tipo));
 		} else if (tipo == 2) {
-			listaCarrosTemp.add(this.carro(tipo));
+			listaVeiculos.add(this.carro(tipo));
 		} else if (tipo == 3) {
-			listaCarrosTemp.add(this.caminhao(tipo));
+			listaVeiculos.add(this.caminhao(tipo));
 		} else {
 			System.out.println("Opção invalida, selecione uma opção de 1 a 3!");
-			this.Cadastrar();
+			this.Cadastrar(listaVeiculos);
 		}
 		
 		int opcao = padronizar.Opcao("Veículo cadastrado com sucesso, deseja cadastrar outro? 1- Sim | 2 - Não");
 		
 		if (opcao == 1) {
-			this.Cadastrar();
+			this.Cadastrar(listaVeiculos);
 		}
 		
-		return listaCarrosTemp;
+		return listaVeiculos;
 	}
 	
 	private Veiculo moto(int tipo) {

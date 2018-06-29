@@ -32,7 +32,7 @@ public class StartSistema {
 		switch(opcaoSelecionada) {
 		 	case 1:
 		 		CadastrarVeiculo cadastrarNovo = new CadastrarVeiculo();
-		 		listaVeiculos = cadastrarNovo.Cadastrar();
+		 		listaVeiculos = cadastrarNovo.Cadastrar(listaVeiculos);
 		 		
 		 		System.out.println("\n ================================================== \n");
 		 		
