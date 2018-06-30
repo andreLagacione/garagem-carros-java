@@ -9,18 +9,18 @@ public class StartSistema {
 	Scanner scanner = new Scanner(System.in);
 	int controleLeitura = 0;
 	
-	public void Start() {
+	public void start() {
 		if (controleLeitura == 0) {
-			this.BuscarVeiculos();
+			this.buscarVeiculos();
 		}
 		
 		TelaInicial tela = new TelaInicial();
-		this.MapearOpcoes(tela.imprimirTela());
+		this.mapearOpcoes(tela.imprimirTela());
 	}
 	
-	public void BuscarVeiculos() {
+	public void buscarVeiculos() {
 		try {
-			listaVeiculos = manipular.Ler();
+			listaVeiculos = manipular.ler();
 			controleLeitura++;
 		} catch(IOException e) {
 			e.printStackTrace();
@@ -28,46 +28,46 @@ public class StartSistema {
 		}
 	}
 	
-	public void MapearOpcoes(int opcaoSelecionada) {
+	public void mapearOpcoes(int opcaoSelecionada) {
 		switch(opcaoSelecionada) {
 		 	case 1:
 		 		CadastrarVeiculo cadastrarNovo = new CadastrarVeiculo();
-		 		listaVeiculos = cadastrarNovo.Cadastrar(listaVeiculos);
+		 		listaVeiculos = cadastrarNovo.cadastrar(listaVeiculos);
 		 		
 		 		System.out.println("\n ================================================== \n");
 		 		
-		 		this.Start();
+		 		this.start();
 		 		break;
 		 		
 		 	case 2:
 		 		AlterarVeiculo alterarVeiculo = new AlterarVeiculo();
-		 		listaVeiculos = alterarVeiculo.Alterar(listaVeiculos);
+		 		listaVeiculos = alterarVeiculo.alterar(listaVeiculos);
 		 		
 		 		System.out.println("\n ================================================== \n");
 		 		
-		 		this.Start();
+		 		this.start();
 		 		break;
 		 		
 		 	case 3:
 		 		Excluir excluir = new Excluir();
-		 		listaVeiculos = excluir.Veiculo(listaVeiculos);
+		 		listaVeiculos = excluir.veiculo(listaVeiculos);
 		 		
 		 		System.out.println("\n ================================================== \n");
 		 		
-		 		this.Start();
+		 		this.start();
 		 		break;
 		 		
 		 	case 4:
 		 		Pesquisar pesquisar = new Pesquisar();
 		 		
-		 		int totalMotos = pesquisar.TotalVeiculosPorTipo(listaVeiculos, 1);
-		 		double valorTotalMotos = pesquisar.ValorTotalVeiculosPorTipo(listaVeiculos, 1);
+		 		int totalMotos = pesquisar.totalVeiculosPorTipo(listaVeiculos, 1);
+		 		double valorTotalMotos = pesquisar.valorTotalVeiculosPorTipo(listaVeiculos, 1);
 		 		
-		 		int totalCarros = pesquisar.TotalVeiculosPorTipo(listaVeiculos, 2);
-		 		double valorTotalCarros = pesquisar.ValorTotalVeiculosPorTipo(listaVeiculos, 2);
+		 		int totalCarros = pesquisar.totalVeiculosPorTipo(listaVeiculos, 2);
+		 		double valorTotalCarros = pesquisar.valorTotalVeiculosPorTipo(listaVeiculos, 2);
 		 		
-		 		int totalCaminhoes = pesquisar.TotalVeiculosPorTipo(listaVeiculos, 3);
-		 		double valorTotalCaminhoes = pesquisar.ValorTotalVeiculosPorTipo(listaVeiculos, 3);
+		 		int totalCaminhoes = pesquisar.totalVeiculosPorTipo(listaVeiculos, 3);
+		 		double valorTotalCaminhoes = pesquisar.valorTotalVeiculosPorTipo(listaVeiculos, 3);
 		 		
 		 		System.out.println("\n");
 		 		System.out.println("A quantida de total de motos é: " + totalMotos);
@@ -88,7 +88,7 @@ public class StartSistema {
 		 		System.out.println("\n ================================================== \n");
 		 		
 		 		if (continuarOpcao4 != "") {
-		 			this.Start();
+		 			this.start();
 		 		}
 		 		
 		 		break;
@@ -97,7 +97,7 @@ public class StartSistema {
 		 		System.out.println("Listar Motos ordenadas por cilindrada");
 		 		Ordenar ordenarMotos = new Ordenar();
 		 		
-		 		ordenarMotos.MotosCilindradas(listaVeiculos);
+		 		ordenarMotos.motosCilindradas(listaVeiculos);
 		 		
 		 		System.out.println("\n");
 		 		System.out.println("Pressione qualquer tecla para continuar.");
@@ -106,7 +106,7 @@ public class StartSistema {
 		 		System.out.println("\n ================================================== \n");
 		 		
 		 		if (continuarOpcao5 != "") {
-		 			this.Start();
+		 			this.start();
 		 		}
 		 		
 		 		break;
@@ -115,7 +115,7 @@ public class StartSistema {
 		 		System.out.println("Listar Carros ordenados pelo Ano decrescente");
 		 		Ordenar ordenarCarrosAno = new Ordenar();
 		 		
-		 		ordenarCarrosAno.VeiculosAnoDecrescente(listaVeiculos);
+		 		ordenarCarrosAno.veiculosAnoDecrescente(listaVeiculos);
 		 		
 		 		System.out.println("\n");
 		 		System.out.println("Pressione qualquer tecla para continuar.");
@@ -124,7 +124,7 @@ public class StartSistema {
 		 		System.out.println("\n ================================================== \n");
 		 		
 		 		if (continuarOpcao6 != "") {
-		 			this.Start();
+		 			this.start();
 		 		}
 		 		
 		 		break;
@@ -133,7 +133,7 @@ public class StartSistema {
 		 		System.out.println("Listar Caminhões ordenados pela quantidade de eixos");
 		 		Ordenar ordenarCaminhoesEixo = new Ordenar();
 		 		
-		 		ordenarCaminhoesEixo.CaminhoesEixos(listaVeiculos);
+		 		ordenarCaminhoesEixo.caminhoesEixos(listaVeiculos);
 		 		
 		 		System.out.println("\n");
 		 		System.out.println("Pressione qualquer tecla para continuar.");
@@ -142,7 +142,7 @@ public class StartSistema {
 		 		System.out.println("\n ================================================== \n");
 		 		
 		 		if (continuarOpcao7 != "") {
-		 			this.Start();
+		 			this.start();
 		 		}
 		 		
 		 		break;
@@ -151,7 +151,7 @@ public class StartSistema {
 		 		System.out.println("Listar veículos agrupados por mês de acordo com o prazo de renovação de licenciamento");
 		 		MapearLicenciamento licenciamento = new MapearLicenciamento();
 		 		
-		 		licenciamento.Mapear(listaVeiculos);
+		 		licenciamento.mapear(listaVeiculos);
 		 		
 		 		System.out.println("\n");
 		 		System.out.println("Pressione qualquer tecla para continuar.");
@@ -160,19 +160,19 @@ public class StartSistema {
 		 		System.out.println("\n ================================================== \n");
 		 		
 		 		if (continuarOpcao8 != "") {
-		 			this.Start();
+		 			this.start();
 		 		}
 		 		
 		 		break;
 		 		
 		 	case 9:
 		 		try {
-		 			manipular.Gravar(listaVeiculos);
+		 			manipular.gravar(listaVeiculos);
 		 			controleLeitura = 0;
 				} catch (IOException e) {
 					e.printStackTrace();
 					System.out.println("Houve algum erro ao salvar, por favor tente novamente em alguns instantes!");
-					this.Start();
+					this.start();
 				}
 		 		
 		 		break;

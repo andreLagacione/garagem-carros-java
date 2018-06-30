@@ -15,7 +15,7 @@ public class TelaInicial {
 		System.out.println("8 - Listar veículos agrupados por mês de acordo com o prazo de renovação de licenciamento.");
 		System.out.println("9 - Salvar e Sair.");
 		
-		int opcaoInicial = padronizar.OpcaoInicial();
+		int opcaoInicial = padronizar.opcaoInicial();
 		
 		return opcaoInicial;
 	}

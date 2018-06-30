@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MapearLicenciamento {
-	public void Mapear(List<Veiculo> listaVeiculos) {
+	public void mapear(List<Veiculo> listaVeiculos) {
 		List<Veiculo> abril = new ArrayList<Veiculo>();
 		List<Veiculo> maio = new ArrayList<Veiculo>();
 		List<Veiculo> junho = new ArrayList<Veiculo>();
@@ -59,18 +59,18 @@ public class MapearLicenciamento {
 			}
 		}
 		
-		this.ImprimirListaMes(abril, "Abril");
-		this.ImprimirListaMes(maio, "Maio");
-		this.ImprimirListaMes(junho, "Junho");
-		this.ImprimirListaMes(julho, "Julho");
-		this.ImprimirListaMes(agosto, "Agosto");
-		this.ImprimirListaMes(setembro, "Setembro");
-		this.ImprimirListaMes(outubro, "Outubro");
-		this.ImprimirListaMes(novembro, "Novembro");
-		this.ImprimirListaMes(dezembro, "Dezembro");
+		this.imprimirListaMes(abril, "Abril");
+		this.imprimirListaMes(maio, "Maio");
+		this.imprimirListaMes(junho, "Junho");
+		this.imprimirListaMes(julho, "Julho");
+		this.imprimirListaMes(agosto, "Agosto");
+		this.imprimirListaMes(setembro, "Setembro");
+		this.imprimirListaMes(outubro, "Outubro");
+		this.imprimirListaMes(novembro, "Novembro");
+		this.imprimirListaMes(dezembro, "Dezembro");
 	}
 	
-	private void ImprimirListaMes(List<Veiculo> listaPorMes, String nomeMes) {
+	private void imprimirListaMes(List<Veiculo> listaPorMes, String nomeMes) {
 		if (listaPorMes.size() > 0) {
 			System.out.println("Imprimindo os veículos com licenciamento para o Mês de " + nomeMes);
 			

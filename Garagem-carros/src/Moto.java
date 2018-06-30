@@ -2,12 +2,8 @@
 public class Moto extends Veiculo implements Comparable<Moto> {
 	public int cilindradas;
 	
-	public int GetCilindradas() {
+	public int getCilindradas() {
 		return this.cilindradas;
-	}
-	
-	public void SetCilindradas(int cilindradas) {
-		this.cilindradas = cilindradas;
 	}
 
 	@Override

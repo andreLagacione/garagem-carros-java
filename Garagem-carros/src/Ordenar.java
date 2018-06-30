@@ -3,8 +3,8 @@ import java.util.Collections;
 import java.util.List;
 
 public class Ordenar {
-	public void MotosCilindradas(List<Veiculo> listaVeiculos) {
-		List<Moto> listaMotos = this.FiltrarMotos(listaVeiculos, 1);
+	public void motosCilindradas(List<Veiculo> listaVeiculos) {
+		List<Moto> listaMotos = this.filtrarMotos(listaVeiculos, 1);
 		
 		Collections.sort(listaMotos);
 		
@@ -15,7 +15,7 @@ public class Ordenar {
 		}
 	}
 	
-	private List<Moto> FiltrarMotos(List<Veiculo> listaVeiculos, int tipo) {
+	private List<Moto> filtrarMotos(List<Veiculo> listaVeiculos, int tipo) {
 		List<Moto> listaMotos = new ArrayList<Moto>();
 		
 		for (int i = 0; i < listaVeiculos.size(); i++) {
@@ -28,7 +28,7 @@ public class Ordenar {
 				moto.placa = veiculo.placa;
 				moto.valor = veiculo.valor;
 				moto.tipo = veiculo.tipo;
-				moto.cilindradas = veiculo.GetCilindradas();
+				moto.cilindradas = veiculo.getCilindradas();
 				listaMotos.add(moto);
 			}
 		}
@@ -36,8 +36,8 @@ public class Ordenar {
 		return listaMotos;
 	}
 	
-	public void VeiculosAnoDecrescente(List<Veiculo> listaVeiculos) {
-		List<FiltroVeiculoAno> listaVeiculosAno = this.FiltrarVeiculos(listaVeiculos, 2);
+	public void veiculosAnoDecrescente(List<Veiculo> listaVeiculos) {
+		List<FiltroVeiculoAno> listaVeiculosAno = this.filtrarVeiculos(listaVeiculos, 2);
 		
 		Collections.sort(listaVeiculosAno);
 		
@@ -48,7 +48,7 @@ public class Ordenar {
 		}
 	}
 	
-	private List<FiltroVeiculoAno> FiltrarVeiculos(List<Veiculo> listaVeiculos, int tipo) {
+	private List<FiltroVeiculoAno> filtrarVeiculos(List<Veiculo> listaVeiculos, int tipo) {
 		List<FiltroVeiculoAno> listaVeiculosAno = new ArrayList<FiltroVeiculoAno>();
 		
 		for (int i = 0; i < listaVeiculos.size(); i++) {
@@ -68,8 +68,8 @@ public class Ordenar {
 		return listaVeiculosAno;
 	}
 	
-	public void CaminhoesEixos(List<Veiculo> listaVeiculos) {
-		List<Caminhao> listaCaminhoes = this.FiltrarCaminhoes(listaVeiculos, 3);
+	public void caminhoesEixos(List<Veiculo> listaVeiculos) {
+		List<Caminhao> listaCaminhoes = this.filtrarCaminhoes(listaVeiculos, 3);
 		
 		Collections.sort(listaCaminhoes);
 		
@@ -80,7 +80,7 @@ public class Ordenar {
 		}
 	}
 	
-	private List<Caminhao> FiltrarCaminhoes(List<Veiculo> listaVeiculos, int tipo) {
+	private List<Caminhao> filtrarCaminhoes(List<Veiculo> listaVeiculos, int tipo) {
 		List<Caminhao> listaCaminhoes = new ArrayList<Caminhao>();
 		
 		for (int i = 0; i < listaVeiculos.size(); i++) {
@@ -93,7 +93,7 @@ public class Ordenar {
 				caminhao.placa = veiculo.placa;
 				caminhao.valor = veiculo.valor;
 				caminhao.tipo = veiculo.tipo;
-				caminhao.qtdeEixos = veiculo.GetQtdeEixos();
+				caminhao.qtdeEixos = veiculo.getQtdeEixos();
 				listaCaminhoes.add(caminhao);
 			}
 		}

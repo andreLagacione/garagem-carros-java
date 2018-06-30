@@ -6,13 +6,13 @@ public class Veiculo {
 	public double valor;
 	public int tipo;
 	
-	public int GetCilindradas() {
+	public int getCilindradas() {
 		Moto moto = new Moto();
-		return moto.GetCilindradas();
+		return moto.getCilindradas();
 	}
 	
-	public int GetQtdeEixos() {
+	public int getQtdeEixos() {
 		Caminhao caminhao = new Caminhao();
-		return caminhao.GetQtdeEixos();
+		return caminhao.getQtdeEixos();
 	}
 }

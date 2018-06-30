@@ -5,40 +5,40 @@ public class AlterarVeiculo {
 	Scanner scanner = new Scanner(System.in);
 	Padronizar padronizar = new Padronizar();
 	
-	public List<Veiculo> Alterar(List<Veiculo> listaVeiculos) {
-		String placaInformada = padronizar.Placa();
+	public List<Veiculo> alterar(List<Veiculo> listaVeiculos) {
+		String placaInformada = padronizar.placa();
 		
 		Pesquisar pesquisar = new Pesquisar();
-		int pesquisarPlaca = pesquisar.Placa(listaVeiculos, placaInformada);
+		int pesquisarPlaca = pesquisar.placa(listaVeiculos, placaInformada);
 		
 		Boolean placaEncontrada = false;
 		
 		if (pesquisarPlaca != -1) {
 			Veiculo veiculo = listaVeiculos.get(pesquisarPlaca);
-			veiculo = this.AlterarVeiculoEncontrado(veiculo, listaVeiculos);
+			veiculo = this.alterarVeiculoEncontrado(veiculo, listaVeiculos);
 			placaEncontrada = true;
 		}
 		
 		if (!placaEncontrada) {
-			int opcao = padronizar.Opcao("Placa não encontrada. 1 - Buscar outra placa | 2 - Voltar ao menu.");
+			int opcao = padronizar.opcao("Placa não encontrada. 1 - Buscar outra placa | 2 - Voltar ao menu.");
 			
 			if (opcao == 1) {
-				this.Alterar(listaVeiculos);
+				return this.alterar(listaVeiculos);
 			} else {
 				return listaVeiculos;
 			}
 		} else {
-			int opcaoSucesso = padronizar.Opcao("Veículo alterado com sucesso! 1 - Alterar outro veículo | 2 - Voltar ao menu.");
+			int opcaoSucesso = padronizar.opcao("Veículo alterado com sucesso! 1 - Alterar outro veículo | 2 - Voltar ao menu.");
 			
 			if (opcaoSucesso == 1) {
-				this.Alterar(listaVeiculos);
+				return this.alterar(listaVeiculos);
 			}
 		}
 		
 		return listaVeiculos;
 	}
 	
-	private Veiculo AlterarVeiculoEncontrado(Veiculo veiculo, List<Veiculo> listaVeiculos) {
+	private Veiculo alterarVeiculoEncontrado(Veiculo veiculo, List<Veiculo> listaVeiculos) {
 		String placa = "";
 		int tipo = 0;
 		int cilindradas = 0;
@@ -47,60 +47,60 @@ public class AlterarVeiculo {
 		int ano = 0;
 		double valor = 0;
 		
-		int alterarPlaca = padronizar.Opcao("Alterar a placa? 1 - Sim | 2 - Não");
+		int alterarPlaca = padronizar.opcao("Alterar a placa? 1 - Sim | 2 - Não");
 		if (alterarPlaca == 1) {
-			placa = this.AlterarPlaca(listaVeiculos);
+			placa = this.alterarPlaca(listaVeiculos);
 			veiculo.placa = placa;
 		}
 		
-		int alterarTipo = padronizar.Opcao("Alterar o tipo? 1 - Sim | 2 - Não");
+		int alterarTipo = padronizar.opcao("Alterar o tipo? 1 - Sim | 2 - Não");
 		if (alterarTipo == 1) {
-			tipo = padronizar.Tipo();
+			tipo = padronizar.tipo();
 			veiculo.tipo = tipo;
 		}
 		
 		if (tipo == 1) {
-			int alterarCilindradas = padronizar.Opcao("Alterar as cilindradas? 1 - Sim | 2 - Não");
+			int alterarCilindradas = padronizar.opcao("Alterar as cilindradas? 1 - Sim | 2 - Não");
 			if (alterarCilindradas == 1) {
-				cilindradas = padronizar.Cilindradas();
+				cilindradas = padronizar.cilindradas();
 			}
 		} else if (tipo == 3) {
-			int alerarQtdeEixos = padronizar.Opcao("Alterar a quantidade de eixos? 1 - Sim | 2 - Não");
+			int alerarQtdeEixos = padronizar.opcao("Alterar a quantidade de eixos? 1 - Sim | 2 - Não");
 			if (alerarQtdeEixos == 1) {
-				qtdeEixos = padronizar.Eixos();
+				qtdeEixos = padronizar.eixos();
 			}
 		}
 		
-		int alterarModelo = padronizar.Opcao("Alterar o modelo? 1 - Sim | 2 - Não");
+		int alterarModelo = padronizar.opcao("Alterar o modelo? 1 - Sim | 2 - Não");
 		if (alterarModelo == 1) {
 			modelo = scanner.next();
 			veiculo.modelo = modelo;
 		}
 		
-		int alterarAno = padronizar.Opcao("Alterar o ano? 1 - Sim | 2 - Não");
+		int alterarAno = padronizar.opcao("Alterar o ano? 1 - Sim | 2 - Não");
 		if (alterarAno == 1) {
-			ano = padronizar.Ano();
+			ano = padronizar.ano();
 			veiculo.ano = ano;
 		}
 		
-		int alterarValor = padronizar.Opcao("Alterar o valor? 1 - Sim | 2 - Não");
+		int alterarValor = padronizar.opcao("Alterar o valor? 1 - Sim | 2 - Não");
 		if (alterarValor == 0) {
-			valor = padronizar.Valor();
+			valor = padronizar.valor();
 			veiculo.valor = valor;
 		}
 		
 		if (cilindradas != 0) {
-			veiculo = this.AlterarMoto(veiculo, cilindradas);
+			veiculo = this.alterarMoto(veiculo, cilindradas);
 		}
 		
 		if (qtdeEixos != 0) {
-			veiculo = this.AlterarCaminhao(veiculo, qtdeEixos);
+			veiculo = this.alterarCaminhao(veiculo, qtdeEixos);
 		}
 
 		return veiculo;
 	}
 	
-	private Veiculo AlterarMoto(Veiculo veiculo, int cilindradas) {
+	private Veiculo alterarMoto(Veiculo veiculo, int cilindradas) {
 		Moto moto = new Moto();
 		moto.modelo = veiculo.modelo;
 		moto.ano = veiculo.ano;
@@ -112,7 +112,7 @@ public class AlterarVeiculo {
 		return moto;
 	}
 	
-	private Veiculo AlterarCaminhao(Veiculo veiculo, int qtdeEixos) {
+	private Veiculo alterarCaminhao(Veiculo veiculo, int qtdeEixos) {
 		Caminhao caminhao = new Caminhao();
 		caminhao.modelo = veiculo.modelo;
 		caminhao.ano = veiculo.ano;
@@ -125,18 +125,18 @@ public class AlterarVeiculo {
 		return caminhao;
 	}
 	
-	private String AlterarPlaca(List<Veiculo> listaVeiculos) {
-		String placa = padronizar.Placa();
+	private String alterarPlaca(List<Veiculo> listaVeiculos) {
+		String placa = padronizar.placa();
 		
 		Pesquisar pesquisar = new Pesquisar();
-		int pesquisarPlaca = pesquisar.Placa(listaVeiculos, placa);
+		int pesquisarPlaca = pesquisar.placa(listaVeiculos, placa);
 		if (pesquisarPlaca != -1) {
-			int opcao = padronizar.Opcao("Essa placa já está cadastrada para outro veículo! 1 - Informar outra placa | 2 - Não alterar a placa.");
+			int opcao = padronizar.opcao("Essa placa já está cadastrada para outro veículo! 1 - Informar outra placa | 2 - Não alterar a placa.");
 			
 			if (opcao != 1) {
 				return "";
 			} else {
-				this.AlterarPlaca(listaVeiculos);
+				return this.alterarPlaca(listaVeiculos);
 			}
 		}
 		

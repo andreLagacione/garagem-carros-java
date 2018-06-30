@@ -6,52 +6,52 @@ import java.util.regex.Pattern;
 public class Padronizar {
 	Scanner scanner = new Scanner(System.in);
 	
-	public int Tipo() {
+	public int tipo() {
 		System.out.println("Informe um tipo:");
 		System.out.println("1 - Motos");
 		System.out.println("2 - Carros");
 		System.out.println("3 - Caminhões");
 		String valor = scanner.next();
-		int tipo = this.ParseToInt(valor, 0);
+		int tipo = this.parseToInt(valor, 0);
 
 		if (tipo <= 0) {
 			System.out.println("O tipo informado não é valido!");
-			this.Tipo();
+			return this.tipo();
 		}
 		
 		return tipo;
 	}
 	
-	public int Cilindradas() {
+	public int cilindradas() {
 		System.out.println("Informe as cilindradas: ");
 		String valor = scanner.next();
-		int cilindradas = this.ParseToInt(valor, 0);
+		int cilindradas = this.parseToInt(valor, 0);
 		
 		if (cilindradas <= 0) {
 			System.out.println("As cilindradas informadas não são validas!");
-			this.Cilindradas();
+			return this.cilindradas();
 		}
 		
 		return cilindradas;
 	}
 	
-	public int Ano() {
+	public int ano() {
 		Calendar calendar = Calendar.getInstance();
 		int anoMaximo = calendar.get(Calendar.YEAR) + 1;
 		
 		System.out.println("Informe o ano: ");
 		String valor = scanner.next();
-		int ano = this.ParseToInt(valor, 0);
+		int ano = this.parseToInt(valor, 0);
 		
 		if (ano <= 0 || ano < 1800 || ano > anoMaximo) {
 			System.out.println("O ano informado não é valido!");
-			this.Ano();
+			return this.ano();
 		}
 		
 		return ano;
 	}
 	
-	public String Placa() {
+	public String placa() {
 		Pattern regexp = Pattern.compile("[aA-zZ]{3}-[0-9]{4}");
 		System.out.println("Informe a placa: ");
 		String placa = scanner.next();
@@ -59,65 +59,65 @@ public class Padronizar {
 		
 		if (!placaValida.find()) {
 			System.out.println("A placa informada não é valida!");
-			this.Placa();
+			return this.placa();
 		}
 		
 		return placa.toUpperCase();
 	}
 	
-	public double Valor() {
+	public double valor() {
 		System.out.println("informe o valor: ");
 		String valor = scanner.next();
-		double valorFinal = this.ParseToDouble(valor, 0);
+		double valorFinal = this.parseToDouble(valor, 0);
 		
 		if (valorFinal <= 0) {
 			System.out.println("O valor informado não é valido!");
-			this.Valor();
+			return this.valor();
 		}
 		
 		return valorFinal;
 	}
 	
-	public int Eixos() {
+	public int eixos() {
 		System.out.println("Informe a quantidade de eixos: ");
 		String valor = scanner.next();
-		int qtdeEixos = this.ParseToInt(valor, 0);
+		int qtdeEixos = this.parseToInt(valor, 0);
 		
 		if (qtdeEixos <= 0) {
 			System.out.println("A quantidade de eixos informada não é valida!");
-			this.Eixos();
+			return this.eixos();
 		}
 		
 		return qtdeEixos;
 	}
 	
-	public int Opcao(String mensagem) {
+	public int opcao(String mensagem) {
 		System.out.println(mensagem);
 		String valor = scanner.next();
-		int opcao = this.ParseToInt(valor, 0);
+		int opcao = this.parseToInt(valor, 0);
 		
 		if (opcao <= 0 && opcao > 2) {
 			System.out.println("A opção informada não é valida!");
-			this.Opcao(mensagem);
+			return this.opcao(mensagem);
 		}
 		
 		return opcao;
 	}
 	
-	public int OpcaoInicial() {
+	public int opcaoInicial() {
 		System.out.println("Selecione uma opção: ");
 		String valor = scanner.next();
-		int opcao = this.ParseToInt(valor, 0);
+		int opcao = this.parseToInt(valor, 0);
 		
 		if (opcao <= 0) {
 			System.out.println("A opção selecionada não é valida!");
-			this.OpcaoInicial();
+			return this.opcaoInicial();
 		}
 		
 		return opcao;
 	}
 	
-	private int ParseToInt(String valor, int base) {
+	private int parseToInt(String valor, int base) {
 		try {
 			return Integer.parseInt(valor);
 		} catch (NumberFormatException e) {
@@ -125,7 +125,7 @@ public class Padronizar {
 		}
 	}
 	
-	private double ParseToDouble(String valor, double base) {
+	private double parseToDouble(String valor, double base) {
 		try {
 			return Double.parseDouble(valor);
 		} catch (NumberFormatException e) {

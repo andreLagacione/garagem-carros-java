@@ -2,12 +2,8 @@
 public class Caminhao extends Veiculo implements Comparable<Caminhao> {
 	public int qtdeEixos;
 	
-	public int GetQtdeEixos() {
+	public int getQtdeEixos() {
 		return this.qtdeEixos;
-	}
-	
-	public void SetQtdeEixos(int qtdeEixos) {
-		this.qtdeEixos = qtdeEixos;
 	}
 
 	@Override

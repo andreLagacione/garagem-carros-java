@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ManipularTxt {
-	public void Gravar(List<Veiculo> listaVeiculos) throws IOException {
+	public void gravar(List<Veiculo> listaVeiculos) throws IOException {
 		File file = new File("ListaVeiculos.txt");
 		
 		try {
@@ -18,9 +18,9 @@ public class ManipularTxt {
 				String formatoSalvar = veiculo.modelo + ";" + veiculo.ano + ";" + veiculo.placa + ";" + veiculo.valor + ";" + veiculo.tipo;
 				
 				if (veiculo.tipo == 1) {
-					formatoSalvar += ";" + veiculo.GetCilindradas();
+					formatoSalvar += ";" + veiculo.getCilindradas();
 				} else if (veiculo.tipo == 3) {
-					formatoSalvar += ";" + veiculo.GetQtdeEixos();
+					formatoSalvar += ";" + veiculo.getQtdeEixos();
 				}
 				
 				arquivo.println(formatoSalvar);
@@ -33,7 +33,7 @@ public class ManipularTxt {
 		}
 	}
 	
-	public List<Veiculo> Ler() throws IOException {
+	public List<Veiculo> ler() throws IOException {
 		List<Veiculo> listaVeiculos = new ArrayList<Veiculo>();
 		
 		try {
